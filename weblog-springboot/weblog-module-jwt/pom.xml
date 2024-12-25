@@ -3,12 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.quanxiaoha</groupId>
+        <groupId>com.zhouyihe</groupId>
         <artifactId>weblog-springboot</artifactId>
         <version>${revision}</version>
     </parent>
 
-    <groupId>com.quanxiaoha</groupId>
+    <groupId>com.zhouyihe</groupId>
     <artifactId>weblog-module-jwt</artifactId>
     <name>weblog-module-jwt</name>
     <description>weblog-module-jwt (JWT 模块，管理用户认证、鉴权)</description>
@@ -61,7 +61,7 @@
 
         <!-- 通用模块 -->
         <dependency>
-            <groupId>com.quanxiaoha</groupId>
+            <groupId>com.zhouyihe</groupId>
             <artifactId>weblog-module-common</artifactId>
         </dependency>
 

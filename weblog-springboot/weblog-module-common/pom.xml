@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.quanxiaoha</groupId>
+		<groupId>com.zhouyihe</groupId>
 		<artifactId>weblog-springboot</artifactId>
 		<version>${revision}</version>
 	</parent>
 
-	<groupId>com.quanxiaoha</groupId>
+	<groupId>com.zhouyihe</groupId>
 	<artifactId>weblog-module-common</artifactId>
 	<name>weblog-module-common</name>
 	<description>weblog-module-common (此模块用于存放一些通用的功能)</description>

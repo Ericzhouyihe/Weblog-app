@@ -11,7 +11,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.quanxiaoha</groupId>
+    <groupId>com.zhouyihe</groupId>
     <artifactId>weblog-springboot</artifactId>
     <version>${revision}</version>
     <name>weblog-springboot</name>
@@ -66,26 +66,24 @@
     <!-- 统一依赖管理 -->
     <dependencyManagement>
         <dependencies>
+            <!-- 几个子模块 -->
             <dependency>
-                <groupId>com.quanxiaoha</groupId>
+                <groupId>com.zhouyihe</groupId>
                 <artifactId>weblog-module-admin</artifactId>
                 <version>${revision}</version>
             </dependency>
-
             <dependency>
-                <groupId>com.quanxiaoha</groupId>
+                <groupId>com.zhouyihe</groupId>
                 <artifactId>weblog-module-common</artifactId>
                 <version>${revision}</version>
             </dependency>
-
             <dependency>
-                <groupId>com.quanxiaoha</groupId>
+                <groupId>com.zhouyihe</groupId>
                 <artifactId>weblog-module-jwt</artifactId>
                 <version>${revision}</version>
             </dependency>
-
             <dependency>
-                <groupId>com.quanxiaoha</groupId>
+                <groupId>com.zhouyihe</groupId>
                 <artifactId>weblog-module-search</artifactId>
                 <version>${revision}</version>
             </dependency>

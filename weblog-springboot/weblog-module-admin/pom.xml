@@ -4,29 +4,28 @@
 	<modelVersion>4.0.0</modelVersion>
 	<!-- 指定父项目为 weblog-springboot -->
 	<parent>
-		<groupId>com.quanxiaoha</groupId>
+		<groupId>com.zhouyihe</groupId>
 		<artifactId>weblog-springboot</artifactId>
 		<version>${revision}</version>
 	</parent>
 
-	<groupId>com.quanxiaoha</groupId>
+	<groupId>com.zhouyihe</groupId>
 	<artifactId>weblog-module-admin</artifactId>
 	<name>weblog-module-admin</name>
 	<description>weblog-admin (负责管理后台相关功能)</description>
 
 	<dependencies>
+		<!--导入几个其他模块-->
 		<dependency>
-			<groupId>com.quanxiaoha</groupId>
+			<groupId>com.zhouyihe</groupId>
 			<artifactId>weblog-module-common</artifactId>
 		</dependency>
-
 		<dependency>
-			<groupId>com.quanxiaoha</groupId>
+			<groupId>com.zhouyihe</groupId>
 			<artifactId>weblog-module-jwt</artifactId>
 		</dependency>
-
 		<dependency>
-			<groupId>com.quanxiaoha</groupId>
+			<groupId>com.zhouyihe</groupId>
 			<artifactId>weblog-module-search</artifactId>
 		</dependency>
 
