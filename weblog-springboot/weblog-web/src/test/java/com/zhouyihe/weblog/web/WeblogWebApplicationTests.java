@@ -10,11 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -42,7 +40,7 @@ class WeblogWebApplicationTests {
         log.error("这是一行 Error 级别日志");
 
         // 占位符
-        String author = "犬小哈";
+        String author = "周益和";
         log.info("这是一行带有占位符日志，作者：{}", author);
     }
 
@@ -50,7 +48,7 @@ class WeblogWebApplicationTests {
     void insertTest() {
         // 构建数据库实体类
         UserDO userDO = UserDO.builder()
-                .username("犬小哈")
+                .username("周益和")
                 .password("123456")
                 .createTime(LocalDateTime.now())
                 .updateTime(LocalDateTime.now())
