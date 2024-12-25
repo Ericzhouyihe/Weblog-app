@@ -5,6 +5,8 @@ import com.zhouyihe.weblog.common.domain.dos.CommentDO;
 import com.zhouyihe.weblog.common.domain.mapper.BlogSettingsMapper;
 import com.zhouyihe.weblog.common.domain.mapper.CommentMapper;
 import com.zhouyihe.weblog.common.enums.CommentStatusEnum;
+import com.zhouyihe.weblog.common.enums.ResponseCodeEnum;
+import com.zhouyihe.weblog.common.exception.BizException;
 import com.zhouyihe.weblog.common.mail.MailHelper;
 import com.zhouyihe.weblog.web.event.PublishCommentEvent;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +27,7 @@ import java.util.Objects;
 @Component
 @Slf4j
 public class PublishCommentSubscriber implements ApplicationListener<PublishCommentEvent> {
-
+    
     @Autowired
     private CommentMapper commentMapper;
     @Autowired
@@ -41,19 +43,19 @@ public class PublishCommentSubscriber implements ApplicationListener<PublishComm
     public void onApplicationEvent(PublishCommentEvent event) {
         // 在这里处理收到的事件，可以是任何逻辑操作
         Long commentId = event.getCommentId();
-
+        
         // 获取当前线程名称
         String threadName = Thread.currentThread().getName();
-
+        
         log.info("==> threadName: {}", threadName);
         log.info("==> 评论发布事件消费成功，commentId: {}", commentId);
-
+        
         CommentDO commentDO = commentMapper.selectById(commentId);
         Long replyCommentId = commentDO.getReplyCommentId();
         String nickname = commentDO.getNickname();
         String content = commentDO.getContent();
         Integer status = commentDO.getStatus();
-
+        
         // 获取博客设置相关信息
         BlogSettingsDO blogSettingsDO = blogSettingsMapper.selectById(1L);
         // 博客名称
@@ -66,17 +68,17 @@ public class PublishCommentSubscriber implements ApplicationListener<PublishComm
         boolean isSensiWordOpen = blogSettingsDO.getIsCommentSensiWordOpen();
         // 博客访问地址
         String domain = weblogAddress;
-
+        
         // 二级评论，并且状态为 “正常”, 邮件通知被评论的用户
         if (Objects.nonNull(replyCommentId)
                 && Objects.equals(status, CommentStatusEnum.NORMAL.getCode())) {
             CommentDO replyCommentDO = commentMapper.selectById(replyCommentId);
-
+            
             String to = replyCommentDO.getMail();
-
+            
             String routerUrl = replyCommentDO.getRouterUrl();
             String title = String.format("你在%s的评论收到了回复", blogName);
-
+            
             // 构建 HTML
             String html = String.format("<html><body>" +
                             "<h2>你的评论:</h2><p>%s</p>" +
@@ -90,19 +92,19 @@ public class PublishCommentSubscriber implements ApplicationListener<PublishComm
                 && StringUtils.isNotBlank(authorMail)) { // 一级评论, 需要通知到博主
             String routerUrl = commentDO.getRouterUrl();
             String title = String.format("%s收到了评论", blogName);
-
+            
             // 如果开启了评论审核，并且当前评论状态为 "待审核"，标题后缀添加【待审核】标识
             if (isCommentExamineOpen && Objects.equals(status, CommentStatusEnum.WAIT_EXAMINE.getCode())) {
                 title = title + "【待审核】";
             }
-
+            
             // 如果开启了敏感词过滤，并且当前评论状态为 "审核不通过"，标题后缀添加【系统已拦截】标识
             if (isSensiWordOpen && Objects.equals(status, CommentStatusEnum.EXAMINE_FAILED.getCode())) {
                 // title = title + "【系统已拦截】";
-                // 有敏感词就不需要通知博主了
-                return;
+                // 有敏感词就不需要通知博主了,直接抛出异常即可
+                throw new BizException(ResponseCodeEnum.COMMENT_CONTAIN_SENSITIVE_WORD);
             }
-
+            
             // 构建 HTML
             String html = String.format("<html><body>" +
                             "<h2>路由:</h2><p>%s</p>" +
@@ -114,6 +116,6 @@ public class PublishCommentSubscriber implements ApplicationListener<PublishComm
             // 发送邮件
             mailHelper.sendHtml(authorMail, title, html);
         }
-
+        
     }
 }
