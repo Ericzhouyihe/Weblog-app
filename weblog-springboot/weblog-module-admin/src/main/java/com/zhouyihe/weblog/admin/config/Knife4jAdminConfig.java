@@ -31,7 +31,7 @@ public class Knife4jAdminConfig {
                 .groupName("Admin 后台接口")
                 .select()
                 // 这里指定 Controller 扫描包路径
-                .apis(RequestHandlerSelectors.basePackage("com.quanxiaoha.weblog.admin.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.zhouyihe.weblog.admin.controller"))
                 .paths(PathSelectors.any())
                 .build();
         return docket;
@@ -45,8 +45,8 @@ public class Knife4jAdminConfig {
         return new ApiInfoBuilder()
                 .title("Weblog 博客 Admin 后台接口文档") // 标题
                 .description("Weblog 是一款由 Spring Boot + Vue 3.2 + Vite 4.3 开发的前后端分离博客。") // 描述
-                .termsOfServiceUrl("https://www.quanxiaoha.com/") // API 服务条款
-                .contact(new Contact("犬小哈", "https://www.quanxiaoha.com", "871361652@qq.com")) // 联系人
+                .termsOfServiceUrl("https://www.zhouyihe.com/") // API 服务条款
+                .contact(new Contact("犬小哈", "https://www.zhouyihe.com", "871361652@qq.com")) // 联系人
                 .version("1.0") // 版本号
                 .build();
     }

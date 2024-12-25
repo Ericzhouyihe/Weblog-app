@@ -62,7 +62,7 @@ public class MarkdownHelper {
     }
 
     public static void main(String[] args) {
-        String markdown = "[http://www.quanxiaoha.com1](http://www.quanxiaoha.com \"http://www.quanxiaoha.com2\")";
+        String markdown = "[http://www.zhouyihe.com1](http://www.zhouyihe.com \"http://www.zhouyihe.com2\")";
         System.out.println(MarkdownHelper.convertMarkdown2Html(markdown));
     }
 

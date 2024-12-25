@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @description Mybatis Plus 配置文件
  **/
 @Configuration
-@MapperScan("com.quanxiaoha.weblog.common.domain.mapper")
+@MapperScan("com.zhouyihe.weblog.common.domain.mapper")
 public class MybatisPlusConfig {
 
     /**
