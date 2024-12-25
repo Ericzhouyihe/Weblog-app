@@ -29,9 +29,9 @@ logging:
 # minio (上传图片需要，需配置成自己的地址)
 #=================================================================
 minio:
-  endpoint: http://116.62.199.48:9000
-  accessKey: quanxiaoha
-  secretKey: quanxiaoha
+  endpoint: http://124.70.155.228:9000
+  accessKey: zhouyihe
+  secretKey: zhouyihe
   bucketName: weblog
   
 #=================================================================

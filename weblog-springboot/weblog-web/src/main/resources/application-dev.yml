@@ -23,8 +23,8 @@ spring:
 #=================================================================
 minio:
   endpoint: http://127.0.0.1:9000
-  accessKey: quanxiaoha
-  secretKey: quanxiaoha
+  accessKey: zhouyihe
+  secretKey: zhouyihe
   bucketName: weblog
   
 #=================================================================

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@ComponentScan({"com.quanxiaoha.weblog.*"}) // 多模块项目中，必需手动指定扫描 com.quanxiaoha.weblog 包下面的所有类
+@ComponentScan({"com.zhouyihe.weblog.*"}) // 多模块项目中，必需手动指定扫描 com.zhouyihe.weblog 包下面的所有类
 @EnableScheduling // 启用定时任务
 public class WeblogWebApplication {
 
