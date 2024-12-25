@@ -98,7 +98,9 @@ public class PublishCommentSubscriber implements ApplicationListener<PublishComm
 
             // 如果开启了敏感词过滤，并且当前评论状态为 "审核不通过"，标题后缀添加【系统已拦截】标识
             if (isSensiWordOpen && Objects.equals(status, CommentStatusEnum.EXAMINE_FAILED.getCode())) {
-                title = title + "【系统已拦截】";
+                // title = title + "【系统已拦截】";
+                // 有敏感词就不需要通知博主了
+                return;
             }
 
             // 构建 HTML
@@ -108,6 +110,7 @@ public class PublishCommentSubscriber implements ApplicationListener<PublishComm
                             "<p><a href='%s%s' target='_blank'>查看详情</a></p>" +
                             "</body></html>",
                     routerUrl, nickname, commentDO.getContent(), domain, routerUrl);
+            
             // 发送邮件
             mailHelper.sendHtml(authorMail, title, html);
         }

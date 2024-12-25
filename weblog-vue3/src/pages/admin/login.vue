@@ -69,8 +69,8 @@ const userStore = useUserStore()
 
 // 定义响应式的表单对象
 const form = reactive({
-    username: 'test',
-    password: 'test'
+    username: '',
+    password: ''
 })
 
 const router = useRouter()
