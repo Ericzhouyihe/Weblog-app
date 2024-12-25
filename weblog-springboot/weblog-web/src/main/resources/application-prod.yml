@@ -33,6 +33,11 @@ minio:
   accessKey: zhouyihe
   secretKey: zhouyihe
   bucketName: weblog
+
+
+weblog:
+  # 博客访问地址-用于在邮件的评论和回复中直接点击详情回到自己的帖子
+  address: http://124.70.155.228/#
   
 #=================================================================
 # Lucene 全文检索

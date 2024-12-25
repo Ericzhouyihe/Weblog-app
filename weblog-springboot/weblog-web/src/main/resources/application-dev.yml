@@ -17,12 +17,11 @@ spring:
       connection-timeout: 30000 # 连接的超时时间
       connection-test-query: SELECT 1 # 用于测试连接是否可用的SQL查询
 
-
 #=================================================================
 # minio (上传图片需要，需配置成自己的地址)
 #=================================================================
 minio:
-  endpoint: http://127.0.0.1:9000
+  endpoint: http://124.70.155.228:9000
   accessKey: zhouyihe
   secretKey: zhouyihe
   bucketName: weblog
@@ -31,4 +30,9 @@ minio:
 # Lucene 全文检索
 #=================================================================
 lucene:
-  indexDir: E:\\java_workspace\\lucene-index # lucene 索引存放的位置
+  indexDir: D:\MyProjectResources\lucene-index\weblog # lucene 索引存放的位置
+
+weblog:
+  # 博客访问地址-用于在邮件的评论和回复中直接点击详情回到自己的帖子
+  # 本地运行时记得按照前端的端口进行修改
+  address: http://127.0.0.1:5173/#
