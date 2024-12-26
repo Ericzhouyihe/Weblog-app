@@ -25,5 +25,3 @@ jwt:
   tokenHeaderKey: Authorization
   # token 请求头中的 value 值前缀
   tokenPrefix: Bearer
-
-

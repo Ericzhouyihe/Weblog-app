@@ -24,7 +24,9 @@ import java.io.IOException;
 @Slf4j
 public class RestAuthenticationFailureHandler implements AuthenticationFailureHandler {
     @Override
-    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+    public void onAuthenticationFailure(HttpServletRequest request,
+            HttpServletResponse response,
+            AuthenticationException exception) throws IOException, ServletException {
         log.warn("AuthenticationException: ", exception);
         if (exception instanceof UsernameOrPasswordNullException) {
             // 用户名或密码为空
@@ -33,7 +35,7 @@ public class RestAuthenticationFailureHandler implements AuthenticationFailureHa
             // 用户名或密码错误
             ResultUtil.fail(response, Response.fail(ResponseCodeEnum.USERNAME_OR_PWD_ERROR));
         }
-
+        
         // 登录失败
         ResultUtil.fail(response, Response.fail(ResponseCodeEnum.LOGIN_FAIL));
     }

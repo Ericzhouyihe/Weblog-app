@@ -57,7 +57,19 @@ class WeblogWebApplicationTests {
 
         userMapper.insert(userDO);
     }
-
+    
+    /**
+     * 测试minio的图片上传功能
+     * @throws IOException
+     * @throws ServerException
+     * @throws InsufficientDataException
+     * @throws ErrorResponseException
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeyException
+     * @throws InvalidResponseException
+     * @throws XmlParserException
+     * @throws InternalException
+     */
     @Test
     void uploadFile2MinioTest() throws IOException, ServerException, InsufficientDataException, ErrorResponseException, NoSuchAlgorithmException, InvalidKeyException, InvalidResponseException, XmlParserException, InternalException {
         File file = new File("D:\\Backup\\Documents\\My Pictures\\111.jpg");

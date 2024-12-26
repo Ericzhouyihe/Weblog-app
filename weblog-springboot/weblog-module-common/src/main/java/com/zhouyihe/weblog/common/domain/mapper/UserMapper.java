@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 /**
  * @author ZhouYihe 1552951165@qq.com
  * @create 2024-08-22 17:06
- * @description
+ * @description 对应 t_user 表
  **/
 public interface UserMapper extends BaseMapper<UserDO> {
     default UserDO findByUsername(String username) {

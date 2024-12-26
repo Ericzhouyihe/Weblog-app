@@ -21,29 +21,29 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  **/
 @Configuration
 public class JwtAuthenticationSecurityConfig extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
-
+    
     @Autowired
     private RestAuthenticationSuccessHandler restAuthenticationSuccessHandler;
-
+    
     @Autowired
     private RestAuthenticationFailureHandler restAuthenticationFailureHandler;
-
+    
     @Autowired
     private PasswordEncoder passwordEncoder;
-
+    
     @Autowired
     private UserDetailsService userDetailsService;
-
+    
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception {
         // 自定义的用于 JWT 身份验证的过滤器
         JwtAuthenticationFilter filter = new JwtAuthenticationFilter();
         filter.setAuthenticationManager(httpSecurity.getSharedObject(AuthenticationManager.class));
-
+        
         // 设置登录认证对应的处理类（成功处理、失败处理）
         filter.setAuthenticationSuccessHandler(restAuthenticationSuccessHandler);
         filter.setAuthenticationFailureHandler(restAuthenticationFailureHandler);
-
+        
         // 直接使用 DaoAuthenticationProvider, 它是 Spring Security 提供的默认的身份验证提供者之一
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         // 设置 userDetailService，用于获取用户的详细信息
